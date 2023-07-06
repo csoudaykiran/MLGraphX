@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+  </head>
+  <body>
+    <center>
+      <button  class="button">IF YOU WANT INDEX VALUES REFER INDEX TABLE IN FIRST PAGE</button>
+    <h1>DECISION TREE REGRESSOR</h1>
+
+        <fieldset>
+
+
+          <form class="" action="{% url 'result' %}" method="get">
+            {%  csrf_token %}
+            Enter the index for feature column (e.g 0,1,2,3,4): <input type="text" required name="fc"><br><br>
+            Enter the index for TARGET COLUMN  : <input type="text" required name="tc"><br><br>
+            Enter NEW DATA Values Separated by Commas: <input type="text" required name="SL"> <br> <br>
+
+
+
+
+            <legend><b><u>Select Hyperparameters</u></b></legend>
+            <label for="Split">Split :</label>
+
+            <input type="text" id="Split" name="Split" value="0.20">
+            <br>
+            <br>
+            <label for="criterion">Criterion :</label>
+            <select id="criterion" name="criterion">
+              <option value="mse">mse</option>
+              <option value="friedman_mse">friedman_mse</option>
+              <option value="sae">sae</option>
+              <option value="poisson">poisson</option>
+            </select>
+            <br>
+            <br>
+            <label for="splitter">Splitter :</label>
+            <select id="splitter" name="splitter">
+                <option value="best">best</option>
+                <option value="random">random</option>
+            </select>
+            <br>
+            <br>
+            <label for="max">Max Features :</label>
+            <select id="max" name="max">
+                <option value="auto">auto</option>
+                <option value="sqrt">sqrt</option>
+                <option value="log2">log2</option>
+            </select>
+            <br>
+            <br>
+            <br>
+            <br>
+            Enter the index for x-axis : <input type="text"  name="xaxis" value="1">
+            <br>
+            <br>
+            Enter the index for y-axis : <input type="text"  name="yaxis" value="2">
+            <br>
+            <br>
+
+            <label for="graph">Select Graph :</label>
+            <select id="graph" name="graph">
+              <option value="scatter">scatter</option>
+              <option value="line">line</option>
+              <option value="pie">pie</option>
+              <option value="hist">hist</option>
+              <option value="corr">corr</option>
+
+
+            </select>
+            <br>
+            <br>
+
+          <input type="submit" name="submit7" value="Submit" class="button"> <br><br>
+
+
+
+
+          </form>
+        </fieldset>
+        <fieldset>
+          predicted value is {{y_pred}}<br>
+          <br>
+          the test accuracy is {{acc}}
+          <br>
+          <br>
+          the train accuracy is {{acc1}}
+          <br>
+          <br>
+        </fieldset>
+        <fieldset>
+
+          <h3>Graph</h3>
+            {% autoescape off %}
+            {{ plot_div }}
+            {% endautoescape %}
+        </fieldset>
+
+      </center>
+  </body>
+</html>

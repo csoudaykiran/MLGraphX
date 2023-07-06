@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: Lavender;
+            color: Black;
+            font-family: "Courier New", monospace;
+        }
+
+        fieldset {
+            background: lightblue;
+            border-radius: 25px;
+            padding: 20px;
+            width: auto; /* Set width to auto for dynamic size */
+            max-width: 200px; /* Add a maximum width for the fieldset */
+            height: auto; /* Set height to auto for dynamic size */
+            max-height: 1000px; /* Add a maximum height for the fieldset */
+        }
+
+        label {
+            width: 180px;
+            display: inline-block;
+            text-align: right;
+            vertical-align: text-top;
+        }
+
+        input[type="radio"] + label,
+        input[type="checkbox"] + label {
+            width: auto;
+        }
+
+        textarea {
+            width: 360px;
+            height: 50px;
+        }
+
+        .label-input-range {
+            display: inline-block;
+            text-align: center;
+            width: 80px;
+            color: red;
+        }
+
+        input:hover,
+        label:hover,
+        button:hover {
+            font-size: 15px;
+        }
+
+        .button {
+            border-radius: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: lightblue;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .button {
+            border-radius: 20px;
+            animation: spin 2s infinite linear;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    
+        .bbutton:hover {
+            transform: scale(1.1) rotate(20deg);
+            background-color: #45a049;
+        }
+        
+        .bbutton {
+            border-radius: 20px;
+            animation: pulse 2s infinite;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .bbutton:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        
+    </style>
+
+    <script>
+        function validateFile() {
+            var fileInput = document.getElementById("fileInput");
+            var filePath = fileInput.value;
+            var allowedExtensions = /(\.csv)$/i;
+
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Please select a file with a CSV extension (.csv).');
+                fileInput.value = '';
+                return false;
+            }
+
+            // Additional condition to check if file extension is CSV
+            var isCSVFile = allowedExtensions.test(filePath);
+            if (!isCSVFile) {
+                alert('Please select a file with a CSV extension (.csv).');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+<center>
+    <h2>UPLOAD YOUR DATASET</h2>
+    <fieldset>
+        <form method="post" enctype="multipart/form-data" onsubmit="return validateFile()">
+            {% csrf_token %}
+            <input type="file" name="document" id="fileInput">
+            <button type="submit" class="bbutton">see index table</button><br>
+        </form>
+        
+        {% if url %}
+        <p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
+        
+        
+        <form method="post" action="{% url 'home' %}" target="_blank"  >
+            {% csrf_token %}
+            <br>
+            <h3>Column Headings:</h3>
+            {% block content %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Column Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for column in a %}
+                    <tr>
+                        <td>{{ forloop.counter0 }}</td>
+                        <td>{{ column }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endblock %}
+            <br>
+            <b>NOW SELECT WHICH MODEL YOU WANT TO USE:</b>
+        <button type="submit" name="" value="result" class="bbutton">ENTER</button>
+        </form>
+        {% endif %}
+    </fieldset>
+</center>
+</body>
+</html>

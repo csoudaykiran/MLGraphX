@@ -1,0 +1,93 @@
+body {
+    background-color: Ivory;
+    color: black;
+    font-family: "Courier New", monospace;
+}
+
+fieldset {
+    background: #90EE90;
+    border-radius: 25px;
+    padding: 20px;
+    width: 800px;
+    transition: width 0.5s;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+label {
+    width: 180px;
+    display: inline-block;
+    text-align: right;
+    vertical-align: text-top;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+    width: auto;
+}
+
+textarea {
+    width: 360px;
+    height: 50px;
+}
+
+.label-input-range {
+    display: inline-block;
+    text-align: center;
+    width: 80px;
+    color: red;
+}
+
+input:hover,
+label:hover,
+button:hover {
+    font-size: 15px;
+}
+
+.button {
+    border-radius: 50px;
+    background-color:blue;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    animation-name: pulse;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+.button:hover {
+    background-color: darkblue;
+    transform: scale(1.1);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
