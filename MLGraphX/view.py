@@ -657,3 +657,10 @@ def DecisionTreeREG(request):
     return render(request, "DecisionTreeREG.html")
 def kmeans(request):
     return render(request, "kmeans.html")
+
+
+def error_404(request, exception):
+    return render(request, 'error.html', status=404)
+
+def error_500(request):
+    return render(request, 'error.html', status=500)

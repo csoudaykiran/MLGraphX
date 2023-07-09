@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Error Page</title>
+  <style>
+    .error-container {
+      width: 300px;
+      margin: 100px auto;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 24px;
+      color: #ff0000; /* Add your desired color */
+    }
+    
+    p {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #333; /* Add your desired color */
+    }
+    
+    .try-again-btn {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for transform */
+    }
+    
+    .try-again-btn:hover {
+      background-color: #0056b3;
+      transform: scale(1.1); /* Add scaling animation on hover */
+    }
+    .button {
+        border-radius: 50px;
+        background-color:blue;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        animation-name: pulse;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+    }
+    
+    .button:hover {
+        background-color: darkblue;
+        transform: scale(1.1);
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <h1>Oops! Something went wrong.</h1>
+    <button class="try-again-btn">Please check the entered details and try again.</button>
+    <button class="button" onclick="window.location.href='/';">Try Again</button>
+  </div>
+</body>
+</html>
