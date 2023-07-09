@@ -130,7 +130,7 @@ def result1(request):
         s = pd.to_numeric(s, errors='coerce')
         cls = KNeighborsClassifier(n_neighbors=int(hyp[1]), weights=hyp[2], algorithm=hyp[3])
         cls.fit(x_train, np.ravel(y_train))
-        y_pred = cls.predict([s])
+        y_pred = cls.predict([list(map(int, s))])
 
         print('Test ACCURACY is ', cls.score(x_test, y_test) * 100, '%')
         print('Train ACCURACY is ', cls.score(x_train, y_train) * 100, '%')
@@ -191,7 +191,7 @@ def result1(request):
         cls = DecisionTreeClassifier(criterion=hyp[1], splitter=hyp[2], max_features=hyp[3])
 
         cls.fit(x_train, np.ravel(y_train))
-        y_pred = cls.predict([s])
+        y_pred = cls.predict([list(map(int, s))])
 
         print('Test ACCURACY is ', cls.score(x_test, y_test) * 100, '%')
         print('Train ACCURACY is ', cls.score(x_train, y_train) * 100, '%')
@@ -251,7 +251,7 @@ def result1(request):
         cls = MultinomialNB(alpha=int(hyp[1]), fit_prior=bool(hyp[2]))
 
         cls.fit(x_train, np.ravel(y_train))
-        y_pred = cls.predict([s])
+        y_pred = cls.predict([list(map(int, s))])
 
         print('Test ACCURACY is ', cls.score(x_test, y_test) * 100, '%')
         print('Train ACCURACY is ', cls.score(x_train, y_train) * 100, '%')
@@ -313,7 +313,7 @@ def result1(request):
 
 
         cls.fit(x_train, np.ravel(y_train))
-        y_pred = cls.predict([s])
+        y_pred = cls.predict([list(map(int, s))])
 
         print('Test ACCURACY is ', cls.score(x_test, y_test) * 100, '%')
         print('Train ACCURACY is ', cls.score(x_train, y_train) * 100, '%')
@@ -373,7 +373,7 @@ def result1(request):
         cls = LinearRegression(fit_intercept=bool(hyp[1]),normalize=bool(hyp[2]))
 
         cls.fit(x_train, np.ravel(y_train))
-        y_pred = cls.predict([s])
+        y_pred = cls.predict([list(map(int, s))])
 
         print('Test ACCURACY is ', cls.score(x_test, y_test) * 100, '%')
         print('Train ACCURACY is ', cls.score(x_train, y_train) * 100, '%')
@@ -434,7 +434,7 @@ def result1(request):
         cls = MLPClassifier(activation=hyp[1],solver=hyp[2],learning_rate=hyp[3])
 
         cls.fit(x_train, np.ravel(y_train))
-        y_pred = cls.predict([s])
+        y_pred = cls.predict([list(map(int, s))])
 
         print('Test ACCURACY is ', cls.score(x_test, y_test) * 100, '%')
         print('Train ACCURACY is ', cls.score(x_train, y_train) * 100, '%')
@@ -495,7 +495,7 @@ def result1(request):
         cls = SVC(C=float(hyp[1]),kernel=hyp[2],gamma=hyp[3])
 
         cls.fit(x_train, np.ravel(y_train))
-        y_pred = cls.predict([s])
+        y_pred = cls.predict([list(map(int, s))])
 
         print('Test ACCURACY is ', cls.score(x_test, y_test) * 100, '%')
         print('Train ACCURACY is ', cls.score(x_train, y_train) * 100, '%')
@@ -556,7 +556,7 @@ def result1(request):
         cls = DecisionTreeRegressor(criterion=hyp[1],splitter=hyp[2],max_features=hyp[3])
 
         cls.fit(x_train, np.ravel(y_train))
-        y_pred = cls.predict([s])
+        y_pred = cls.predict([list(map(int, s))])
 
         print('Test ACCURACY is ', cls.score(x_test, y_test) * 100, '%')
         print('Train ACCURACY is ', cls.score(x_train, y_train) * 100, '%')
@@ -615,7 +615,7 @@ def result1(request):
         cls = KMeans(n_clusters=int(hyp[1]),algorithm=hyp[2])
 
         cls.fit(x_train, np.ravel(y_train))
-        y_pred = cls.predict([s])
+        y_pred = cls.predict([list(map(int, s))])
 
         print('Test ACCURACY is ', cls.score(x_test, y_test) * 100, '%')
         print('Train ACCURACY is ', cls.score(x_train, y_train) * 100, '%')
